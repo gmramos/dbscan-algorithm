@@ -1,30 +1,30 @@
 package models;
 
 public class Point {
-    private float latitude;
-    private float longitude;
+    private float x;
+    private float y;
     private boolean used;
 
-    public Point(float latitude, float longitude){
-        this.latitude = latitude;
-        this.longitude = longitude;
+    public Point(float x, float y){
+        this.x = x;
+        this.y = y;
         this.used = false;
     }
 
-    public float getLatitude() {
-        return latitude;
+    public float getX() {
+        return x;
     }
 
-    public void setLatitude(float latitude) {
-        this.latitude = latitude;
+    public void setX(float x) {
+        this.x = x;
     }
 
-    public float getLongitude() {
-        return longitude;
+    public float getY() {
+        return y;
     }
 
-    public void setLongitude(float longitude) {
-        this.longitude = longitude;
+    public void setY(float y) {
+        this.y = y;
     }
 
     public boolean isUsed() {

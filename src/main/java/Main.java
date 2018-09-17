@@ -1,7 +1,7 @@
 import dbscan.DBScan;
 import models.Point;
+import models.Polygon;
 
-import java.sql.Time;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -32,16 +32,19 @@ public class Main {
         points.add(new Point(103,103));
         points.add(new Point(104,104));
 
-        DBScan clusterizer = new DBScan(7, 2);
-        Map<Integer, List<Point>> clusters = clusterizer.clusterize(points);
+        DBScan clusterizer = new DBScan(2, 2);
+        Map<Integer, Polygon> clusters = clusterizer.clusterize(points);
 
         System.out.println();
         System.out.println("CLuster count: "+ clusters.size());
 
         clusters.forEach( (k,v) -> {
             System.out.println();
-            System.out.println(v.size());
-            printCenter(v);
+            System.out.println(v.getPoints().size());
+            Point center = v.getCenter();
+
+            System.out.println(center.getX());
+            System.out.println(center.getY());
         });
 
         Instant end = Instant.now();
@@ -50,15 +53,5 @@ public class Main {
 
     }
 
-    public static void printCenter(List<Point> sinfo){
-        float x = sinfo.get(0).getLatitude(), y=sinfo.get(0).getLongitude();
-
-        for (int i =1 ; i< sinfo.size(); i++){
-            x = (x + sinfo.get(i).getLatitude())/2;
-            y = (y + sinfo.get(i).getLongitude())/2;
-        }
-
-        System.out.println(x + " " + y );
-    }
 
 }
