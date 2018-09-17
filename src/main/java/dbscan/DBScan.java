@@ -16,7 +16,7 @@ public class DBScan {
     private int minPoints;
 
     public DBScan(double epslon, int minPoints) {
-        this.epslon = Math.pow(epslon, 2);
+        this.epslon = epslon;
         this.minPoints = minPoints;
     }
 

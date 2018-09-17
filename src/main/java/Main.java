@@ -32,7 +32,7 @@ public class Main {
         points.add(new Point(103,103));
         points.add(new Point(104,104));
 
-        DBScan clusterizer = new DBScan(2, 2);
+        DBScan clusterizer = new DBScan(3, 2);
         Map<Integer, Polygon> clusters = clusterizer.clusterize(points);
 
         System.out.println();
