@@ -1,4 +1,5 @@
 import dbscan.DBScan;
+import models.Circle;
 import models.Point;
 import models.Polygon;
 
@@ -12,7 +13,7 @@ public class Main {
 
     public static void main(String[] args){
         Instant start = Instant.now();
-        List<Point> points = new ArrayList<Point>();
+        List<Point> points = new ArrayList<>();
 
         points.add(new Point(-2,-1));
         points.add(new Point(-1,-2));
@@ -32,20 +33,12 @@ public class Main {
         points.add(new Point(103,103));
         points.add(new Point(104,104));
 
-        DBScan clusterizer = new DBScan(3, 2);
-        Map<Integer, Polygon> clusters = clusterizer.clusterize(points);
+        DBScan clusterizer = new DBScan(new Circle(2), 3);
+        List<Polygon> clusters = clusterizer.clusterize(points);
 
         System.out.println();
         System.out.println("CLuster count: "+ clusters.size());
 
-        clusters.forEach( (k,v) -> {
-            System.out.println();
-            System.out.println(v.getPoints().size());
-            Point center = v.getCenter();
-
-            System.out.println(center.getX());
-            System.out.println(center.getY());
-        });
 
         Instant end = Instant.now();
 
